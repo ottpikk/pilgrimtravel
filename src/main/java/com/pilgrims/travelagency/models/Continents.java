@@ -9,6 +9,8 @@ import org.hibernate.annotations.Type;
 import javax.lang.model.element.Name;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -22,11 +24,14 @@ public class Continents extends Auditable<String> implements Serializable {
     @Column(updatable = false, nullable = false)
     @Type(type = "org.hibernate.type.UUIDCharType")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "id")
+    private UUID id;
     private String name;
+
+    @ManyToOne(mappedBy = "Continents")
+    public List <Country> countryList = new ArrayList<>();
+
+
 
     private boolean isActive;
 }
