@@ -1,9 +1,6 @@
 package com.pilgrims.travelagency.services;
 
-import com.pilgrims.travelagency.models.City;
-import com.pilgrims.travelagency.models.Country;
 import com.pilgrims.travelagency.models.Hotel;
-import com.pilgrims.travelagency.models.HotelStandard;
 import com.sun.xml.bind.api.impl.NameConverter;
 
 import java.util.List;
@@ -35,14 +32,14 @@ public interface HotelService {
      * @param country Country
      * @return List of hotels
      */
-  //  List<Hotel> findHotelsByCountry(Country country);
+    List<Hotel> findHotelsByCountry(Country country);
 
     /**
      * To find a hotel by standard
-     * @param hotelStandard Standard
+     * @param standard Standard
      * @return List of hotels
      */
-    List<Hotel> findHotelsByStandard(HotelStandard hotelStandard);
+    List<Hotel> findHotelsByStandard(NameConverter.Standard standard);
 
     /**
      * To find a hotel by name
@@ -52,24 +49,11 @@ public interface HotelService {
     Hotel findHotelByName(String name);
 
     /**
-     * To find a hotel by id
-     * @param id id
-     * @return hotel
-     */
-    Hotel findHotelById(UUID id);
-
-    /**
-     * To find all hotels
-     * @return List of hotels
-     */
-    List<Hotel> findAllHotels();
-
-    /**
      * To update a existing Hotel
      *
      * @param hotel Hotel
      */
-    void updateHotel(Hotel hotel);
+    void editHotel(Hotel hotel);
 
     /**
      * To delete a hotel by its ID
@@ -82,6 +66,4 @@ public interface HotelService {
      * @param id id of hotel
      */
     void restoreHotelById(UUID id);
-
-
 }

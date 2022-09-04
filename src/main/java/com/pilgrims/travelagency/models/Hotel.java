@@ -1,12 +1,15 @@
 package com.pilgrims.travelagency.models;
 
-
+import com.pilgrims.travelagency.utils.Constants;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -19,7 +22,7 @@ import java.util.UUID;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class Hotel extends Auditable<String> implements Serializable {
-    private static final long serialVersionID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -29,13 +32,8 @@ public class Hotel extends Auditable<String> implements Serializable {
     private UUID id;
 
     private String name;
-
-    @Enumerated(EnumType.STRING)
-    private HotelStandard hotelStandard;
-
+    private Constants.HotelStandard hotelStandard;
     private String description;
-
-    @OneToOne(cascade = CascadeType.MERGE)
     private City city;
 
     private boolean isActive;
