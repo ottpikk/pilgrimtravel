@@ -7,18 +7,12 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.UUID;
 
-/**
- * User model
- *
- * @author Ott Pikk
- */
-@Data
 @Entity
-@EqualsAndHashCode
-public class User extends Auditable<String> implements Serializable {
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class Continent extends Auditable<String> implements Serializable {
     private static final long serialVersionID = 1L;
 
     @Id
@@ -28,18 +22,10 @@ public class User extends Auditable<String> implements Serializable {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
 
-    private String userName;
-    private String password;
-
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String address;
-    private String phoneNumber;
-    private LocalDate dateOfBirth;
+    private String name;
 
     @OneToOne(cascade = CascadeType.MERGE)
-    private Authority authority;
+    public Country country;
 
     private boolean isActive;
 }
