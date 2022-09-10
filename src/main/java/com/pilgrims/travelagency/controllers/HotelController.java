@@ -12,8 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -82,7 +80,7 @@ public class HotelController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createHotel(@Valid @RequestBody Hotel hotel) {
+    public ResponseEntity<?> createHotel( @RequestBody Hotel hotel) {
         hotelService.createHotel(hotel);
         return new ResponseEntity<>(HttpStatus.OK);
     }
