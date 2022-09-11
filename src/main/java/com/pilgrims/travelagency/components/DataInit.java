@@ -35,9 +35,9 @@ public class DataInit {
 
     @PostConstruct
     public void init() throws AuthorityNotFoundException {
-        //initAuthorityData();
+        initAuthorityData();
         //initUserData();
-        //populateDBWithUsers();
+        populateDBWithUsers();
     }
 
     // PRIVATE METHODS //
@@ -47,15 +47,18 @@ public class DataInit {
       System.out.println("Starting initializing Authority..");
       Authority authorityAdmin = new Authority();
       authorityAdmin.setName(AUTHORITY_ADMIN);
-          authorityService.createAuthority(authorityAdmin);
+      authorityService.createAuthority(authorityAdmin);
+          System.out.println("Successfully initialized Authority: ADMIN");
 
       Authority authorityCustomer = new Authority();
       authorityCustomer.setName(AUTHORITY_CUSTOMER);
       authorityService.createAuthority(authorityCustomer);
+          System.out.println("Successfully initialized Authority: CUSTOMER");
 
       Authority authorityGuest = new Authority();
       authorityGuest.setName(AUTHORITY_GUEST);
       authorityService.createAuthority(authorityGuest);
+          System.out.println("Successfully initialized Authority: GUEST");
       }
 
 
